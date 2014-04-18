@@ -40,11 +40,15 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ofdMain = new System.Windows.Forms.OpenFileDialog();
             this.tmrAdd = new System.Windows.Forms.Timer(this.components);
+            this.trvMachines = new System.Windows.Forms.TreeView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +133,14 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(3, 3);
             this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.trvMachines);
             this.splitContainer1.Size = new System.Drawing.Size(1054, 459);
             this.splitContainer1.SplitterDistance = 807;
             this.splitContainer1.TabIndex = 0;
@@ -143,6 +155,24 @@
             this.tmrAdd.Interval = 500;
             this.tmrAdd.Tick += new System.EventHandler(this.tmrAdd_Tick);
             // 
+            // trvMachines
+            // 
+            this.trvMachines.CheckBoxes = true;
+            this.trvMachines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trvMachines.Location = new System.Drawing.Point(0, 0);
+            this.trvMachines.Name = "trvMachines";
+            this.trvMachines.Size = new System.Drawing.Size(243, 459);
+            this.trvMachines.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(5, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(799, 100);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Main Options";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,7 +182,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
-            this.Text = "Form1";
+            this.Text = "ReStar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -160,6 +190,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -180,6 +212,8 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog ofdMain;
         private System.Windows.Forms.Timer tmrAdd;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TreeView trvMachines;
     }
 }
 

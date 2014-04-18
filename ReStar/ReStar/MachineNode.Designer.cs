@@ -44,6 +44,7 @@
             // 
             // tmrPingTimer
             // 
+            this.tmrPingTimer.Enabled = true;
             this.tmrPingTimer.Interval = 3000;
             this.tmrPingTimer.Tick += new System.EventHandler(this.tmrPingTimer_Tick);
             // 

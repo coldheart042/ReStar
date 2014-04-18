@@ -40,6 +40,7 @@ namespace ReStar
                 this.BackColor = Color.Yellow;
                 status = 1;
             }
+            tmrPingTimer.Start();
         }
 
         private void tmrPingTimer_Tick(object sender, EventArgs e)
