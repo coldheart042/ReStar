@@ -17,6 +17,7 @@ namespace ReStar
 
         ArrayList nodes = new ArrayList();
         int pos = 0;
+        string o = "/r ";
 
         public frmMain()
         {
@@ -76,6 +77,67 @@ namespace ReStar
                 MachineNode m = new MachineNode(temp);
                 flowLayoutPanel1.Controls.Add(m);
                 pos++;
+            }
+        }
+
+        private void dumpSessionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            trvMachines.Nodes.Clear();
+            flowLayoutPanel1.Controls.Clear();
+            nodes.Clear();
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            foreach (TreeNode n in trvMachines.Nodes){
+                if (n.Checked)
+                {
+                    restart(o, numTimer.Value, n.Text, true, 0, 0, "");
+                }
+            }
+        }
+
+        private void restart( String type, Decimal timeout, String machineName, Boolean planned, int majorReason, int minorReason, String comments )
+        {
+            String time = "";
+            String isPlanned;
+            String allComments = "";
+            if (timeout > 0){
+                time = "/t " + timeout.ToString() + " ";
+            }
+            if (planned)
+            {
+                isPlanned = "/d /p:";
+            }
+            else
+            {
+                isPlanned = "/d /u:";
+            }
+            if (comments != "")
+            {
+                allComments = "/c " + "'" + comments + "'";
+            }
+            System.Diagnostics.Process.Start("shutdown " + type + time +/* "/m \\" + machineName + " " +*/ isPlanned + majorReason + ":" + minorReason + allComments );
+        }
+
+        private void rdoRestart_CheckedChanged(object sender, EventArgs e)
+        {
+           if (rdoRestart.Checked){
+               o = "/r ";
+           }
+        }
+
+        private void rdoShutDown_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoShutDown.Checked){
+                o = "/s ";
+            }
+        }
+
+        private void rdoAbort_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoAbort.Checked){
+                o = "/a ";
             }
         }
     }
