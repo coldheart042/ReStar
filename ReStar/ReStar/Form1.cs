@@ -55,6 +55,11 @@ namespace ReStar
                         }
                     }
                 }
+                foreach(String node in nodes)
+                {
+                    TreeNode n = new TreeNode(node);
+                    trvMachines.Nodes.Add(n);
+                }
             }
             catch (Exception ex)
             {

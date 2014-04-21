@@ -38,10 +38,10 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.trvMachines = new System.Windows.Forms.TreeView();
             this.ofdMain = new System.Windows.Forms.OpenFileDialog();
             this.tmrAdd = new System.Windows.Forms.Timer(this.components);
-            this.trvMachines = new System.Windows.Forms.TreeView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -145,15 +145,14 @@
             this.splitContainer1.SplitterDistance = 807;
             this.splitContainer1.TabIndex = 0;
             // 
-            // ofdMain
+            // groupBox1
             // 
-            this.ofdMain.Filter = "Text Files|*.txt|Comma Separated|*.csv";
-            this.ofdMain.FileOk += new System.ComponentModel.CancelEventHandler(this.ofdMain_FileOk);
-            // 
-            // tmrAdd
-            // 
-            this.tmrAdd.Interval = 500;
-            this.tmrAdd.Tick += new System.EventHandler(this.tmrAdd_Tick);
+            this.groupBox1.Location = new System.Drawing.Point(5, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(799, 100);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Main Options";
             // 
             // trvMachines
             // 
@@ -164,14 +163,15 @@
             this.trvMachines.Size = new System.Drawing.Size(243, 459);
             this.trvMachines.TabIndex = 0;
             // 
-            // groupBox1
+            // ofdMain
             // 
-            this.groupBox1.Location = new System.Drawing.Point(5, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(799, 100);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Main Options";
+            this.ofdMain.Filter = "Text Files|*.txt|Comma Separated|*.csv";
+            this.ofdMain.FileOk += new System.ComponentModel.CancelEventHandler(this.ofdMain_FileOk);
+            // 
+            // tmrAdd
+            // 
+            this.tmrAdd.Interval = 500;
+            this.tmrAdd.Tick += new System.EventHandler(this.tmrAdd_Tick);
             // 
             // frmMain
             // 
