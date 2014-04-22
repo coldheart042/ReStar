@@ -89,56 +89,37 @@ namespace ReStar
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+            String type = "/r ";
+            String timeout = "/t " + numTimer.Value.ToString() + " ";
+            String comments = "/c " + "'" + txtComments.Text + "' ";
             foreach (TreeNode n in trvMachines.Nodes){
+                String machine = "/m \\\\" + n.Text;
                 if (n.Checked)
                 {
-                    restart(o, numTimer.Value, n.Text, true, 0, 0, "");
+                    restart();
                 }
             }
         }
 
-        private void restart( String type, Decimal timeout, String machineName, Boolean planned, int majorReason, int minorReason, String comments )
+        private void restart(  )
         {
-            String time = "";
-            String isPlanned;
-            String allComments = "";
-            if (timeout > 0){
-                time = "/t " + timeout.ToString() + " ";
-            }
-            if (planned)
-            {
-                isPlanned = "/d /p:";
-            }
-            else
-            {
-                isPlanned = "/d /u:";
-            }
-            if (comments != "")
-            {
-                allComments = "/c " + "'" + comments + "'";
-            }
-            System.Diagnostics.Process.Start("shutdown " + type + time +/* "/m \\" + machineName + " " +*/ isPlanned + majorReason + ":" + minorReason + allComments );
+
+            System.Diagnostics.Process.Start("shutdown", "");
         }
 
         private void rdoRestart_CheckedChanged(object sender, EventArgs e)
         {
-           if (rdoRestart.Checked){
-               o = "/r ";
-           }
+          
         }
 
         private void rdoShutDown_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoShutDown.Checked){
-                o = "/s ";
-            }
+           
         }
 
         private void rdoAbort_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoAbort.Checked){
-                o = "/a ";
-            }
+           
         }
     }
 }
