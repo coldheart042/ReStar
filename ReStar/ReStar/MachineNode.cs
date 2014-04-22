@@ -35,46 +35,63 @@ namespace ReStar
 
         private void MachineNode_Load(object sender, EventArgs e)
         {
-            PingReply response = checkOnline.Send(MachineName, Timeout);
-            if (response.Status == IPStatus.Success) {
-                this.BackColor = Color.Yellow;
-                status = 1;
+            try
+            {
+                PingReply response = checkOnline.Send(MachineName, Timeout);
+                if (response.Status == IPStatus.Success)
+                {
+                    this.BackColor = Color.Yellow;
+                    status = 1;
+                }
+                tmrPingTimer.Start();
             }
-            tmrPingTimer.Start();
+            catch (Exception)
+            {
+                noderr();
+            }
         }
 
         private void tmrPingTimer_Tick(object sender, EventArgs e)
         {
-            // When the timer elapses, ping the Machine
-            PingReply response = checkOnline.Send(MachineName, Timeout);
-            switch (response.Status){
-                case IPStatus.TimedOut:
-                    if (status == 1) {  // If the machine was on & unchanged
-                        nodeOff();
-                        status = 2;
-                    }
-                    else if (status == 3) 
-                    { // If the machine was on & changed (error)
+            try
+            {
+                // When the timer elapses, ping the Machine
+                PingReply response = checkOnline.Send(MachineName, Timeout);
+                switch (response.Status)
+                {
+                    case IPStatus.TimedOut:
+                        if (status == 1)
+                        {  // If the machine was on & unchanged
+                            nodeOff();
+                            status = 2;
+                        }
+                        else if (status == 3)
+                        { // If the machine was on & changed (error)
+                            noderr();
+                            status = 4;
+                        }
+                        break;
+                    case IPStatus.Success:
+                        if (status == 2)
+                        { // If off & unchanged
+                            nodeon();
+                            status = 3;
+                        }
+                        else if (status == 4)
+                        { // If off & changed (recovery from error)
+                            nodeon();
+                        }
+                        break;
+                    default:
+                        // Any errors return a black node and stop the ping timer to save resources.
                         noderr();
-                        status = 4;
-                    }
-                    break;
-                case IPStatus.Success:
-                    if (status == 2)
-                    { // If off & unchanged
-                        nodeon();
-                        status = 3;
-                    }
-                    else if (status == 4)
-                    { // If off & changed (recovery from error)
-                        nodeon();
-                    }
-                    break;
-                default:
-                    // Any errors return a black node and stop the ping timer to save resources.
-                    noderr();
-                    tmrPingTimer.Stop();
-                    break;
+                        tmrPingTimer.Stop();
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                noderr();
             }
         }
         // DRY Methods:

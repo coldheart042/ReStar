@@ -219,13 +219,13 @@
             this.rdoUnplanned.Name = "rdoUnplanned";
             this.rdoUnplanned.Size = new System.Drawing.Size(77, 17);
             this.rdoUnplanned.TabIndex = 9;
-            this.rdoUnplanned.TabStop = true;
             this.rdoUnplanned.Text = "Unplanned";
             this.rdoUnplanned.UseVisualStyleBackColor = true;
             // 
             // rdoPlanned
             // 
             this.rdoPlanned.AutoSize = true;
+            this.rdoPlanned.Checked = true;
             this.rdoPlanned.Location = new System.Drawing.Point(9, 75);
             this.rdoPlanned.Name = "rdoPlanned";
             this.rdoPlanned.Size = new System.Drawing.Size(64, 17);

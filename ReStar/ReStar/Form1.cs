@@ -92,19 +92,101 @@ namespace ReStar
             String type = "/r ";
             String timeout = "/t " + numTimer.Value.ToString() + " ";
             String comments = "/c " + "'" + txtComments.Text + "' ";
+            String majorCode;
+            switch (cmbMajor.SelectedIndex)
+            {
+                case 0:
+                    majorCode = "0";
+                    break;
+                case 1:
+                    majorCode = "1";
+                    break;
+                case 2:
+                    majorCode = "2";
+                    break;
+                case 3:
+                    majorCode = "4";
+                    break;
+                case 4:
+                    majorCode = "5";
+                    break;
+                case 5:
+                    majorCode = "6";
+                    break;
+                default:
+                    majorCode = "0";
+                    break;
+            }
+
+            String minorCode;
+            switch (cmbMinor.SelectedIndex)
+            {
+                case 0:
+                    minorCode = "0";
+                    break;
+                case 1:
+                    minorCode = "1";
+                    break;
+                case 2:
+                    minorCode = "2";
+                    break;
+                case 3:
+                    minorCode = "3";
+                    break;
+                case 4:
+                    minorCode = "4";
+                    break;
+                case 5:
+                    minorCode = "5";
+                    break;
+                case 6:
+                    minorCode = "6";
+                    break;
+                case 7:
+                    minorCode = "11";
+                    break;
+                case 8:
+                    minorCode = "12";
+                    break;
+                case 9:
+                    minorCode = "15";
+                    break;
+                case 10:
+                    minorCode = "16";
+                    break;
+                case 11:
+                    minorCode = "17";
+                    break;
+                case 12:
+                    minorCode = "18";
+                    break;
+                default:
+                    minorCode = "0";
+                    break;
+            }
+
+            String isPlanned = "P:";
+            if (rdoPlanned.Checked && isPlanned != "/d P:")
+            {
+                isPlanned = "/d P:";
+            }
+            if (rdoUnplanned.Checked && isPlanned != "/d u:")
+            {
+                isPlanned = "/d u:";
+            }
             foreach (TreeNode n in trvMachines.Nodes){
-                String machine = "/m \\\\" + n.Text;
+                String machine = "/m \\\\" + n.Text + " ";
                 if (n.Checked)
                 {
-                    restart();
+                    restart( type, machine, timeout, isPlanned, majorCode, minorCode, comments );
                 }
             }
         }
 
-        private void restart(  )
+        private void restart( String type, String machineName, String timeout, String isPlanned, String majorCode, String minorCode, String comments )
         {
 
-            System.Diagnostics.Process.Start("shutdown", "");
+            System.Diagnostics.Process.Start("shutdown", type + machineName + timeout + isPlanned + majorCode + ":" + minorCode + comments );
         }
 
         private void rdoRestart_CheckedChanged(object sender, EventArgs e)
