@@ -122,46 +122,46 @@ namespace ReStar
             switch (cmbMinor.SelectedIndex)
             {
                 case 0:
-                    minorCode = "0";
+                    minorCode = "0 ";
                     break;
                 case 1:
-                    minorCode = "1";
+                    minorCode = "1 ";
                     break;
                 case 2:
-                    minorCode = "2";
+                    minorCode = "2 ";
                     break;
                 case 3:
-                    minorCode = "3";
+                    minorCode = "3 ";
                     break;
                 case 4:
-                    minorCode = "4";
+                    minorCode = "4 ";
                     break;
                 case 5:
-                    minorCode = "5";
+                    minorCode = "5 ";
                     break;
                 case 6:
-                    minorCode = "6";
+                    minorCode = "6 ";
                     break;
                 case 7:
-                    minorCode = "11";
+                    minorCode = "11 ";
                     break;
                 case 8:
-                    minorCode = "12";
+                    minorCode = "12 ";
                     break;
                 case 9:
-                    minorCode = "15";
+                    minorCode = "15 ";
                     break;
                 case 10:
-                    minorCode = "16";
+                    minorCode = "16 ";
                     break;
                 case 11:
-                    minorCode = "17";
+                    minorCode = "17 ";
                     break;
                 case 12:
-                    minorCode = "18";
+                    minorCode = "18 ";
                     break;
                 default:
-                    minorCode = "0";
+                    minorCode = "0 ";
                     break;
             }
 
@@ -185,7 +185,7 @@ namespace ReStar
 
         private void restart( String type, String machineName, String timeout, String isPlanned, String majorCode, String minorCode, String comments )
         {
-
+            //MessageBox.Show("shutdown" + type + machineName + timeout + isPlanned + majorCode + ":" + minorCode + comments);
             System.Diagnostics.Process.Start("shutdown", type + machineName + timeout + isPlanned + majorCode + ":" + minorCode + comments );
         }
 
